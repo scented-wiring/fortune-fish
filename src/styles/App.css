@@ -5,13 +5,25 @@
   align-items: center;
 }
 
+#spotlight-hide {
+  opacity: 0;
+  margin: 100px 0 30px 0;
+  height: 60px;
+  width: 300px;
+  border-radius: 50%;
+  background-color: black;
+  box-shadow: 0 0 20px 20px black;
+}
+
 #spotlight {
+  opacity: 1;
   margin: 100px 0 30px 0;
   height: 60px;
   width: 300px;
   border-radius: 50%;
   background-color: white;
   box-shadow: 0 0 20px 20px white;
+  transition: all 3s ease 0s;
 }
 
 #message {

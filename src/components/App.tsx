@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import $ from "jquery";
 
 import "../styles/App.css";
 
 const App = () => {
   const [gameStatus, setGameStatus] = useState("initial");
   const [notReadyClick, setNotReadyClick] = useState(0);
+
+  useEffect(() => {
+    $("#spotlight-hide").attr("id", "spotlight");
+  });
 
   let message, buttons;
 
@@ -122,7 +127,7 @@ const App = () => {
   return (
     <div id="App">
       <h1>Fortune Fish</h1>
-      <div id="spotlight" />
+      <div id="spotlight-hide" />
       <p id="message">{message}</p>
       <div id="buttons">{buttons}</div>
     </div>
