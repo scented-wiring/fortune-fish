@@ -1,0 +1,27 @@
+body {
+  background-color: black;
+  color: white;
+  font-family: "Playfair Display", serif;
+  font-size: 1em;
+}
+
+h1 {
+  margin: 0;
+  font-family: "EB Garamond", serif;
+  font-size: 3em;
+  text-decoration: underline;
+}
+
+button {
+  font-family: "Playfair Display", serif;
+  border: 0;
+  margin: 0 6px;
+  background-color: white;
+  width: 80px;
+  height: 25px;
+  padding-bottom: 3px;
+}
+
+button:focus {
+  outline: 0;
+}

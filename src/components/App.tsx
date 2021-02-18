@@ -27,7 +27,9 @@ const App = () => {
   if (gameStatus === "initial") {
     message = "Present your palm, my child.";
     buttons = (
-      <button onClick={() => setGameStatus("palm presented")}>OK</button>
+      <div>
+        <button onClick={() => setGameStatus("palm presented")}>OK</button>
+      </div>
     );
   } else if (gameStatus === "palm presented") {
     message = "Are you ready to hear your fortune?";
@@ -57,42 +59,60 @@ const App = () => {
     message = "Right, just forget it then";
     buttons = null;
   } else if (gameStatus === "ready") {
-    message = "Here comes the fish";
-    buttons = <button onClick={handleFortune}>...</button>;
+    message = "He comes.";
+    buttons = (
+      <div>
+        <button onClick={handleFortune}>...</button>
+      </div>
+    );
   } else if (gameStatus === "fortune-jealousy") {
     message = "The fortune fish has determined you to be a jealous person.";
     buttons = (
-      <button onClick={() => setGameStatus("try again")}>Try Again</button>
+      <div>
+        <button onClick={() => setGameStatus("try again")}>Try Again</button>
+      </div>
     );
   } else if (gameStatus === "fortune-indifferent") {
     message = "The fortune fish has determined that you are indifferent.";
     buttons = (
-      <button onClick={() => setGameStatus("try again")}>Try Again</button>
+      <div>
+        <button onClick={() => setGameStatus("try again")}>Try Again</button>
+      </div>
     );
   } else if (gameStatus === "fortune-love") {
     message = "The fortune fish has determined that you are in love.";
     buttons = (
-      <button onClick={() => setGameStatus("try again")}>Try Again</button>
+      <div>
+        <button onClick={() => setGameStatus("try again")}>Try Again</button>
+      </div>
     );
   } else if (gameStatus === "fortune-fickle") {
     message = "The fortune fish has determined you to be a fickle person.";
     buttons = (
-      <button onClick={() => setGameStatus("try again")}>Try Again</button>
+      <div>
+        <button onClick={() => setGameStatus("try again")}>Try Again</button>
+      </div>
     );
   } else if (gameStatus === "fortune-false") {
     message = "The fortune fish has determined you to be false.";
     buttons = (
-      <button onClick={() => setGameStatus("try again")}>Try Again</button>
+      <div>
+        <button onClick={() => setGameStatus("try again")}>Try Again</button>
+      </div>
     );
   } else if (gameStatus === "fortune-tired") {
     message = "The fortune fish has determined that you are tired.";
     buttons = (
-      <button onClick={() => setGameStatus("try again")}>Try Again</button>
+      <div>
+        <button onClick={() => setGameStatus("try again")}>Try Again</button>
+      </div>
     );
   } else if (gameStatus === "fortune-passionate") {
     message = "The fortune fish has determined you to be a passionate person.";
     buttons = (
-      <button onClick={() => setGameStatus("try again")}>Try Again</button>
+      <div>
+        <button onClick={() => setGameStatus("try again")}>Try Again</button>
+      </div>
     );
   } else if (gameStatus === "try again") {
     message = "You can't have another go. The fish has spoken.";
@@ -100,10 +120,11 @@ const App = () => {
   }
 
   return (
-    <div className="App">
+    <div id="App">
       <h1>Fortune Fish</h1>
-      <p>{message}</p>
-      {buttons}
+      <div id="spotlight" />
+      <p id="message">{message}</p>
+      <div id="buttons">{buttons}</div>
     </div>
   );
 };
