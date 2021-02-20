@@ -1,4 +1,4 @@
-#Fortune Fish App (Work in progress)
+# Fortune Fish App (Work in progress)
 
 Inspired by the Christmas cracker trinket of the same name, this app will\* render a fish that randomly animates to one of seven positions and give the user a corresponding fortune.
 
