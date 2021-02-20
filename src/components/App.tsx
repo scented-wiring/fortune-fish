@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import $ from "jquery";
+import hand from "../images/hand.png";
 
 import "../styles/App.css";
 
@@ -9,6 +10,9 @@ const App = () => {
 
   useEffect(() => {
     $("#spotlight-hide").attr("id", "spotlight");
+    if (gameStatus !== "initial") {
+      $("#hand-hide").attr("id", "hand");
+    }
   });
 
   let message, buttons;
@@ -128,6 +132,7 @@ const App = () => {
     <div id="App">
       <h1>Fortune Fish</h1>
       <div id="spotlight-hide" />
+      <img id="hand-hide" src={hand} alt="hand" width="200px" />
       <p id="message">{message}</p>
       <div id="buttons">{buttons}</div>
     </div>
