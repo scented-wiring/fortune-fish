@@ -13,6 +13,13 @@ const App = () => {
     if (gameStatus !== "initial") {
       $("#hand-hide").attr("id", "hand");
     }
+    if (
+      gameStatus !== "initial" &&
+      gameStatus !== "palm presented" &&
+      gameStatus !== "not ready"
+    ) {
+      $("#fish-hide").attr("id", "fish");
+    }
   });
 
   let message, buttons;
@@ -132,6 +139,11 @@ const App = () => {
     <div id="App">
       <h1>Fortune Fish</h1>
       <div id="spotlight-hide" />
+      <div id="fish-hide">
+        <div id="fish-body"></div>
+        <div id="fin-top"></div>
+        <div id="fin-bottom"></div>
+      </div>
       <img id="hand-hide" src={hand} alt="hand" width="200px" />
       <p id="message">{message}</p>
       <div id="buttons">{buttons}</div>
