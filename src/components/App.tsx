@@ -145,8 +145,10 @@ const App = () => {
         <div id="fin-bottom"></div>
       </div>
       <img id="hand-hide" src={hand} alt="hand" width="200px" />
-      <p id="message">{message}</p>
-      <div id="buttons">{buttons}</div>
+      <div id="ui">
+        <p id="message">{message}</p>
+        <div id="buttons">{buttons}</div>
+      </div>
     </div>
   );
 };
