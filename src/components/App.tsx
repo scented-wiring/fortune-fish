@@ -34,8 +34,14 @@ const App = () => {
 
   const handleFortune = () => {
     const num = Math.floor(Math.random() * 7) + 1;
-    if (num === 7) setGameStatus("fortune-jealousy");
-    if (num === 6) setGameStatus("fortune-indifferent");
+    if (num === 7) {
+      setGameStatus("fortune-jealousy");
+      $("#head").attr("id", "head-move");
+    }
+    if (num === 6) {
+      setGameStatus("fortune-indifferent");
+      $("#tail").attr("id", "tail-move");
+    }
     if (num === 5) setGameStatus("fortune-love");
     if (num === 4) setGameStatus("fortune-fickle");
     if (num === 3) setGameStatus("fortune-false");
@@ -143,9 +149,9 @@ const App = () => {
       <h1>Fortune Fish</h1>
       <div id="spotlight-hide" />
       <div id="fish-hide">
-        <img src={head} alt="fish head" />
-        <img src={body} alt="fish body" />
-        <img src={tail} alt="fish tail" />
+        <img src={head} alt="fish head" id="head" />
+        <img src={body} alt="fish body" id="body" />
+        <img src={tail} alt="fish tail" id="tail" />
       </div>
       <img id="hand-hide" src={hand} alt="hand" width="200px" />
       <div id="ui">
