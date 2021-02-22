@@ -53,8 +53,8 @@
 #fish {
   z-index: 1;
   position: absolute;
-  margin-top: 155px;
-  margin-right: 10px;
+  margin-top: 158px;
+  margin-right: 18px;
   transition: all 2s ease 0s;
 }
 
@@ -66,6 +66,38 @@
 #tail-move {
   transform-origin: left;
   animation: move 1s infinite;
+}
+
+#jump {
+  z-index: 1;
+  position: absolute;
+  margin-top: 155px;
+  margin-right: 10px;
+  animation: jump 0.5s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+#jump-nose {
+  z-index: 1;
+  position: absolute;
+  margin-top: 155px;
+  margin-right: 10px;
+  animation: jump-nose 0.5s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+#head-curl {
+  transform-origin: bottom right;
+  animation: head-curl 1s;
+  animation-fill-mode: forwards;
+}
+
+#tail-curl {
+  transform-origin: bottom left;
+  animation: tail-curl 1s;
+  animation-fill-mode: forwards;
 }
 
 #ui {
@@ -86,5 +118,41 @@
   }
   100% {
     transform: scaleX(1);
+  }
+}
+
+@keyframes jump {
+  50% {
+    transform: rotate(90deg) translateX(-50px);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes jump-nose {
+  50% {
+    transform: rotate(180deg) translateY(70px);
+  }
+  100% {
+    transform: rotate(270deg) translateX(40px);
+  }
+}
+
+@keyframes head-curl {
+  50% {
+    transform: skewY(10deg);
+  }
+  100% {
+    transform: skewY(20deg);
+  }
+}
+
+@keyframes tail-curl {
+  50% {
+    transform: skewY(-10deg);
+  }
+  100% {
+    transform: skewY(-20deg);
   }
 }

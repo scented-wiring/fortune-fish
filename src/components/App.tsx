@@ -33,24 +33,50 @@ const App = () => {
   };
 
   const handleFortune = () => {
+    setGameStatus("wait");
     const num = Math.floor(Math.random() * 7) + 1;
     if (num === 7) {
-      setGameStatus("fortune-jealousy");
       $("#head").attr("id", "head-move");
+      setTimeout(() => {
+        setGameStatus("fortune-jealousy");
+      }, 1500);
     }
     if (num === 6) {
-      setGameStatus("fortune-indifferent");
       $("#tail").attr("id", "tail-move");
+      setTimeout(() => {
+        setGameStatus("fortune-indifferent");
+      }, 1500);
     }
     if (num === 5) {
-      setGameStatus("fortune-love");
       $("#tail").attr("id", "tail-move");
       $("#head").attr("id", "head-move");
+      setTimeout(() => {
+        setGameStatus("fortune-love");
+      }, 1500);
     }
-    if (num === 4) setGameStatus("fortune-fickle");
-    if (num === 3) setGameStatus("fortune-false");
-    if (num === 2) setGameStatus("fortune-tired");
-    if (num === 1) setGameStatus("fortune-passionate");
+    if (num === 4) {
+      $("#tail").attr("id", "tail-curl");
+      $("#head").attr("id", "head-curl");
+      setTimeout(() => {
+        setGameStatus("fortune-fickle");
+      }, 1500);
+    }
+    if (num === 3) {
+      $("#fish").attr("id", "jump");
+      setTimeout(() => {
+        setGameStatus("fortune-false");
+      }, 1500);
+    }
+    if (num === 2)
+      setTimeout(() => {
+        setGameStatus("fortune-tired");
+      }, 1500);
+    if (num === 1) {
+      $("#fish").attr("id", "jump-nose");
+      setTimeout(() => {
+        setGameStatus("fortune-passionate");
+      }, 1500);
+    }
   };
 
   if (gameStatus === "initial") {
@@ -91,7 +117,7 @@ const App = () => {
     message = "He comes.";
     buttons = (
       <div>
-        <button onClick={handleFortune}>...</button>
+        <button onClick={handleFortune}>OK</button>
       </div>
     );
   } else if (gameStatus === "fortune-jealousy") {
@@ -112,7 +138,7 @@ const App = () => {
     );
   } else if (gameStatus === "fortune-love") {
     message =
-      "Ah, he is moving both head and fin. The fortune fish has determined that you are in love. Good for you.";
+      "Ah, he is moving both head and tail. The fortune fish has determined that you are in love. Good for you.";
     buttons = (
       <div>
         <button onClick={() => setGameStatus("try again")}>Try Again</button>
@@ -144,7 +170,7 @@ const App = () => {
     );
   } else if (gameStatus === "fortune-passionate") {
     message =
-      "The almighty fish has curled up entirely! This means that you are a passionate person. What are you doing later?";
+      "The almighty fish balances upon his nose! This means that you are a passionate person. What are you doing later?";
     buttons = (
       <div>
         <button onClick={() => setGameStatus("try again")}>Try Again</button>
@@ -152,6 +178,9 @@ const App = () => {
     );
   } else if (gameStatus === "try again") {
     message = "You can't have another go. The fish has spoken.";
+    buttons = null;
+  } else if (gameStatus === "wait") {
+    message = null;
     buttons = null;
   }
 
