@@ -81,14 +81,8 @@
   0% {
     transform: scaleX(1);
   }
-  25% {
-    transform: scaleX(0.8);
-  }
   50% {
-    transform: scaleX(0.5);
-  }
-  75% {
-    transform: scaleX(0.8);
+    transform: scaleX(0.7);
   }
   100% {
     transform: scaleX(1);
