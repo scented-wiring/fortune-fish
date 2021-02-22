@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import $ from "jquery";
 import hand from "../images/hand.png";
+import head from "../images/head.png";
+import body from "../images/body.png";
+import tail from "../images/tail.png";
 
 import "../styles/App.css";
 
@@ -140,9 +143,9 @@ const App = () => {
       <h1>Fortune Fish</h1>
       <div id="spotlight-hide" />
       <div id="fish-hide">
-        <div id="fish-body"></div>
-        <div id="fin-top"></div>
-        <div id="fin-bottom"></div>
+        <img src={head} alt="fish head" />
+        <img src={body} alt="fish body" />
+        <img src={tail} alt="fish tail" />
       </div>
       <img id="hand-hide" src={hand} alt="hand" width="200px" />
       <div id="ui">
