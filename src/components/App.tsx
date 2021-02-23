@@ -23,6 +23,9 @@ const App = () => {
     ) {
       $("#fish-hide").attr("id", "fish");
     }
+    if (gameStatus === "not ready" && notReadyClick === 3) {
+      $("#hand").attr("id", "hand-hide");
+    }
   });
 
   let fortune, message, buttons;
@@ -120,10 +123,13 @@ const App = () => {
         <button onClick={handleFortune}>OK</button>
       </div>
     );
+  } else if (gameStatus === "wait") {
+    message = null;
+    buttons = null;
   } else if (gameStatus === "Jealous") {
     fortune = gameStatus;
     message =
-      "See how the head moves? This means that the fortune fish has determined you to be a jealous person. A most ugly trait.";
+      "See how the head moves? The fortune fish has determined you to be a jealous person. A most ugly trait.";
     buttons = (
       <div>
         <button onClick={() => setGameStatus("try again")}>Try Again</button>
@@ -132,7 +138,7 @@ const App = () => {
   } else if (gameStatus === "Indifferent") {
     fortune = gameStatus;
     message =
-      "His tail wags. The fortune fish has determined that you are indifferent.";
+      "A wagging tail... The fortune fish has determined that you are indifferent. Show a little enthusiasm once in a while.";
     buttons = (
       <div>
         <button onClick={() => setGameStatus("try again")}>Try Again</button>
@@ -150,7 +156,7 @@ const App = () => {
   } else if (gameStatus === "Fickle") {
     fortune = gameStatus;
     message =
-      "See how he curls? The fortune fish has determined you to be a fickle person. You should have courage in your convictions.";
+      "See how he curls? He has determined that you are a fickle person. You should have courage in your convictions.";
     buttons = (
       <div>
         <button onClick={() => setGameStatus("try again")}>Try Again</button>
@@ -159,7 +165,7 @@ const App = () => {
   } else if (gameStatus === "False") {
     fortune = gameStatus;
     message =
-      "A sick 180 flip! What a sight. The fortune fish has determined you to be false.";
+      "A sick 180 flip! What a sight. The fortune fish has determined you to be false. Try sincerity some time.";
     buttons = (
       <div>
         <button onClick={() => setGameStatus("try again")}>Try Again</button>
@@ -177,7 +183,7 @@ const App = () => {
   } else if (gameStatus === "Passionate") {
     fortune = gameStatus;
     message =
-      "The almighty fish balances upon his nose! This means that you are a passionate person. What are you doing later?";
+      "Astounding! This balancing act means that you are a passionate person. What are you doing later?";
     buttons = (
       <div>
         <button onClick={() => setGameStatus("try again")}>Try Again</button>
@@ -186,11 +192,7 @@ const App = () => {
   } else if (gameStatus === "try again") {
     message = "You can't have another go. The fish has spoken. Accept it.";
     buttons = null;
-  } else if (gameStatus === "wait") {
-    message = null;
-    buttons = null;
   }
-
   return (
     <div id="App">
       <h1>FORTUNE FISH</h1>
