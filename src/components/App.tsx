@@ -8,32 +8,35 @@ import tail from "../images/tail.png";
 import "../styles/App.css";
 
 const App = () => {
-  const [gameStatus, setGameStatus] = useState("initial");
+  const [gameStatus, setGameStatus] = useState("prefish:initial");
   const [notReadyClick, setNotReadyClick] = useState(0);
-
-  useEffect(() => {
-    $("#spotlight-hide").attr("id", "spotlight");
-    if (gameStatus !== "initial") {
-      $("#hand-hide").attr("id", "hand");
-    }
-    if (
-      gameStatus !== "initial" &&
-      gameStatus !== "palm presented" &&
-      gameStatus !== "not ready"
-    ) {
-      $("#fish-hide").attr("id", "fish");
-    }
-    if (gameStatus === "not ready" && notReadyClick === 3) {
-      $("#hand").attr("id", "hand-hide");
-    }
-  });
 
   let fortune, message, buttons;
 
-  const handleNotReadyClick = () => {
-    setGameStatus("not ready");
-    setNotReadyClick(notReadyClick + 1);
-  };
+  useEffect(() => {
+    //spotlight fades in on load
+    $("#spotlight-hide").attr("id", "spotlight");
+  });
+
+  if (gameStatus !== "prefish:initial") {
+    //hand slides in after initial screen
+    $("#hand-hide").attr("id", "hand");
+  }
+
+  if (!gameStatus.includes("prefish:")) {
+    //fish floats down on cue
+    $("#fish-hide").attr("id", "fish");
+  }
+
+  if (gameStatus.includes("fortune:")) {
+    //set fortune at appropriate time
+    fortune = gameStatus.replace("fortune:", "");
+  }
+
+  if (gameStatus === "prefish:not ready" && notReadyClick === 3) {
+    //hand slides out after three "not ready" presses
+    $("#hand").attr("id", "hand-hide");
+  }
 
   const handleFortune = () => {
     setGameStatus("wait");
@@ -47,73 +50,72 @@ const App = () => {
     if (num === 6) {
       $("#tail").attr("id", "tail-move");
       setTimeout(() => {
-        setGameStatus("Indifferent");
+        setGameStatus("fortune:Indifferent");
       }, 1500);
     }
     if (num === 5) {
       $("#tail").attr("id", "tail-move");
       $("#head").attr("id", "head-move");
       setTimeout(() => {
-        setGameStatus("In Love");
+        setGameStatus("fortune:In Love");
       }, 1500);
     }
     if (num === 4) {
       $("#tail").attr("id", "tail-curl");
       $("#head").attr("id", "head-curl");
       setTimeout(() => {
-        setGameStatus("Fickle");
+        setGameStatus("fortune:Fickle");
       }, 1500);
     }
     if (num === 3) {
       $("#fish").attr("id", "jump");
       setTimeout(() => {
-        setGameStatus("False");
+        setGameStatus("fortune:False");
       }, 1500);
     }
     if (num === 2)
       setTimeout(() => {
-        setGameStatus("Tired");
+        setGameStatus("fortune:Tired");
       }, 1500);
     if (num === 1) {
       $("#fish").attr("id", "jump-nose");
       setTimeout(() => {
-        setGameStatus("Passionate");
+        setGameStatus("fortune:Passionate");
       }, 1500);
     }
   };
 
-  if (gameStatus === "initial") {
+  const handleNotReadyClick = () => {
+    setGameStatus("prefish:not ready");
+    setNotReadyClick(notReadyClick + 1);
+  };
+
+  const readyButtons = ( //avoids repetition
+    <div>
+      <button onClick={() => setGameStatus("ready")}>Yes</button>
+      <button onClick={handleNotReadyClick}>No</button>
+    </div>
+  );
+
+  if (gameStatus === "prefish:initial") {
     message = "Present your palm, my child.";
     buttons = (
       <div>
-        <button onClick={() => setGameStatus("palm presented")}>OK</button>
+        <button onClick={() => setGameStatus("prefish:palm presented")}>
+          OK
+        </button>
       </div>
     );
-  } else if (gameStatus === "palm presented") {
+  } else if (gameStatus === "prefish:palm presented") {
     message = "Are you ready to hear your fortune?";
-    buttons = (
-      <div>
-        <button onClick={() => setGameStatus("ready")}>Yes</button>
-        <button onClick={handleNotReadyClick}>No</button>
-      </div>
-    );
-  } else if (gameStatus === "not ready" && notReadyClick === 1) {
+    buttons = readyButtons;
+  } else if (gameStatus === "prefish:not ready" && notReadyClick === 1) {
     message = "How about now?";
-    buttons = (
-      <div>
-        <button onClick={() => setGameStatus("ready")}>Yes</button>
-        <button onClick={handleNotReadyClick}>No</button>
-      </div>
-    );
-  } else if (gameStatus === "not ready" && notReadyClick === 2) {
+    buttons = readyButtons;
+  } else if (gameStatus === "prefish:not ready" && notReadyClick === 2) {
     message = "...Now?";
-    buttons = (
-      <div>
-        <button onClick={() => setGameStatus("ready")}>Yes</button>
-        <button onClick={handleNotReadyClick}>No</button>
-      </div>
-    );
-  } else if (gameStatus === "not ready" && notReadyClick === 3) {
+    buttons = readyButtons;
+  } else if (gameStatus === "prefish:not ready" && notReadyClick === 3) {
     message = "Right, just forget it then";
     buttons = null;
   } else if (gameStatus === "ready") {
@@ -126,8 +128,7 @@ const App = () => {
   } else if (gameStatus === "wait") {
     message = null;
     buttons = null;
-  } else if (gameStatus === "Jealous") {
-    fortune = gameStatus;
+  } else if (gameStatus === "fortune:Jealous") {
     message =
       "See how the head moves? The fortune fish has determined you to be a jealous person. A most ugly trait.";
     buttons = (
@@ -135,8 +136,7 @@ const App = () => {
         <button onClick={() => setGameStatus("try again")}>Try Again</button>
       </div>
     );
-  } else if (gameStatus === "Indifferent") {
-    fortune = gameStatus;
+  } else if (gameStatus === "fortune:Indifferent") {
     message =
       "A wagging tail... The fortune fish has determined that you are indifferent. Show a little enthusiasm once in a while.";
     buttons = (
@@ -144,8 +144,7 @@ const App = () => {
         <button onClick={() => setGameStatus("try again")}>Try Again</button>
       </div>
     );
-  } else if (gameStatus === "In Love") {
-    fortune = gameStatus;
+  } else if (gameStatus === "fortune:In Love") {
     message =
       "Ah, he is moving both head and tail. The fortune fish has determined that you are in love. Good for you.";
     buttons = (
@@ -153,8 +152,7 @@ const App = () => {
         <button onClick={() => setGameStatus("try again")}>Try Again</button>
       </div>
     );
-  } else if (gameStatus === "Fickle") {
-    fortune = gameStatus;
+  } else if (gameStatus === "fortune:Fickle") {
     message =
       "See how he curls? He has determined that you are a fickle person. You should have courage in your convictions.";
     buttons = (
@@ -162,17 +160,15 @@ const App = () => {
         <button onClick={() => setGameStatus("try again")}>Try Again</button>
       </div>
     );
-  } else if (gameStatus === "False") {
-    fortune = gameStatus;
+  } else if (gameStatus === "fortune:False") {
     message =
-      "A sick 180 flip! What a sight. The fortune fish has determined you to be false. Try sincerity some time.";
+      "A sick 180 flip! What a sight! But this means the fortune fish has determined you to be false. Try sincerity some time.";
     buttons = (
       <div>
         <button onClick={() => setGameStatus("try again")}>Try Again</button>
       </div>
     );
-  } else if (gameStatus === "Tired") {
-    fortune = gameStatus;
+  } else if (gameStatus === "fortune:Tired") {
     message =
       "The fish is motionless! This means that you are tired, or possibly dead. Have you checked your pulse recently?";
     buttons = (
@@ -180,8 +176,7 @@ const App = () => {
         <button onClick={() => setGameStatus("try again")}>Try Again</button>
       </div>
     );
-  } else if (gameStatus === "Passionate") {
-    fortune = gameStatus;
+  } else if (gameStatus === "fortune:Passionate") {
     message =
       "Astounding! This balancing act means that you are a passionate person. What are you doing later?";
     buttons = (
