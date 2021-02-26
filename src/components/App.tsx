@@ -94,6 +94,7 @@ const App = () => {
     gameStatus === "prefish:palm presented" ||
     gameStatus === "prefish:not ready"
   ) {
+    //renders ready options
     buttons = (
       <div>
         <button onClick={() => setGameStatus("ready")}>Yes</button>
@@ -127,6 +128,11 @@ const App = () => {
     buttons = null;
   } else if (gameStatus === "ready") {
     message = "He comes...";
+    setTimeout(() => {
+      setGameStatus("waiting");
+    }, 3000);
+  } else if (gameStatus === "waiting") {
+    message = null;
     buttons = (
       <div>
         <button onClick={handleFortune}>Well?</button>
