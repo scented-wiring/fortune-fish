@@ -182,3 +182,15 @@
     transform: skewY(-20deg);
   }
 }
+
+@media only screen and (max-width: 359px) {
+  #spotlight-hide {
+    height: 30px;
+    width: 200px;
+  }
+
+  #spotlight {
+    height: 30px;
+    width: 200px;
+  }
+}

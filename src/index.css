@@ -32,3 +32,11 @@ button:hover {
 button:focus {
   outline: 0;
 }
+
+@media only screen and (max-width: 359px) {
+  h1 {
+    margin: 0;
+    font-family: "EB Garamond", serif;
+    font-size: 2em;
+  }
+}
