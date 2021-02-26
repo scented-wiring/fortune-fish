@@ -129,15 +129,8 @@ const App = () => {
   } else if (gameStatus === "ready") {
     message = "He comes...";
     setTimeout(() => {
-      setGameStatus("waiting");
+      handleFortune();
     }, 3000);
-  } else if (gameStatus === "waiting") {
-    message = null;
-    buttons = (
-      <div>
-        <button onClick={handleFortune}>Well?</button>
-      </div>
-    );
   } else if (gameStatus === "wait") {
     message = null;
     buttons = null;
