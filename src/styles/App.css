@@ -32,7 +32,7 @@
 
 #fortune {
   margin: 15px 0 0 0;
-  padding: 5px 15px;
+  padding: 2px 15px 5px 15px;
   font-size: 1.6em;
   font-family: "EB Garamond", serif;
   background-color: white;
@@ -187,10 +187,80 @@
   #spotlight-hide {
     height: 30px;
     width: 200px;
+    margin-top: 100px;
   }
 
   #spotlight {
     height: 30px;
     width: 200px;
+    margin-top: 100px;
+  }
+
+  #hand-hide {
+    width: 150px;
+    height: 151px;
+    margin-top: 185px;
+  }
+
+  #hand {
+    width: 150px;
+    height: 151px;
+    margin-top: 55px;
+  }
+
+  #message {
+    width: 200px;
+    text-align: center;
+  }
+
+  #fortune {
+    margin: 20px 0 0 0;
+    padding: 0 15px 2px 15px;
+    font-size: 1.3em;
+    font-family: "EB Garamond", serif;
+    background-color: white;
+    color: black;
+    border-style: groove;
+    text-decoration: underline;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  }
+
+  #fish-hide {
+    margin-right: 6px;
+  }
+
+  #fish {
+    margin-top: 110px;
+    margin-right: 6px;
+  }
+
+  #head,
+  #head-move,
+  #head-curl {
+    width: 22px;
+    height: 30px;
+  }
+
+  #body {
+    width: 36px;
+    height: 30px;
+  }
+
+  #tail,
+  #tail-move,
+  #tail-curl {
+    width: 17px;
+    height: 30px;
+  }
+
+  #jump {
+    margin-top: 109px;
+    margin-right: 3px;
+  }
+
+  #jump-nose {
+    margin-top: 120px;
+    margin-right: 6px;
   }
 }

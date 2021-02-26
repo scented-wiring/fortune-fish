@@ -14,7 +14,7 @@ const App = () => {
   let fortune, message, buttons;
 
   const handleFortune = () => {
-    setGameStatus("wait");
+    setGameStatus("pause");
     const num = Math.floor(Math.random() * 7) + 1;
     if (num === 7) {
       $("#head").attr("id", "head-move");
@@ -129,9 +129,16 @@ const App = () => {
   } else if (gameStatus === "ready") {
     message = "He comes...";
     setTimeout(() => {
-      handleFortune();
+      setGameStatus("waiting");
     }, 3000);
-  } else if (gameStatus === "wait") {
+  } else if (gameStatus === "waiting") {
+    message = null;
+    buttons = (
+      <div>
+        <button onClick={handleFortune}>Well?</button>
+      </div>
+    );
+  } else if (gameStatus === "pause") {
     message = null;
     buttons = null;
   } else if (gameStatus === "fortune:Jealous") {
