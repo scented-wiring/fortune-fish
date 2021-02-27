@@ -124,7 +124,7 @@ const App = () => {
   } else if (gameStatus === "prefish:not ready" && notReadyClick === 2) {
     message = "...Now?";
   } else if (gameStatus === "prefish:not ready" && notReadyClick === 3) {
-    message = "Right, just forget it then";
+    message = "Right, just forget it then.";
     buttons = null;
   } else if (gameStatus === "ready") {
     message = "He comes...";
