@@ -14,49 +14,38 @@ const App = () => {
   let fortune, message, buttons;
 
   const handleFortune = () => {
+    let fortuneType: string;
     const num = Math.floor(Math.random() * 7) + 1;
     if (num === 7) {
       $("#head").attr("id", "head-move");
-      setTimeout(() => {
-        setGameStatus("fortune:Jealous");
-      }, 1500);
+      fortuneType = "Jealous";
     }
     if (num === 6) {
       $("#tail").attr("id", "tail-move");
-      setTimeout(() => {
-        setGameStatus("fortune:Indifferent");
-      }, 1500);
+      fortuneType = "Indifferent";
     }
     if (num === 5) {
       $("#tail").attr("id", "tail-move");
       $("#head").attr("id", "head-move");
-      setTimeout(() => {
-        setGameStatus("fortune:In Love");
-      }, 1500);
+      fortuneType = "In Love";
     }
     if (num === 4) {
       $("#tail").attr("id", "tail-curl");
       $("#head").attr("id", "head-curl");
-      setTimeout(() => {
-        setGameStatus("fortune:Fickle");
-      }, 1500);
+      fortuneType = "Fickle";
     }
     if (num === 3) {
       $("#fish").attr("id", "jump");
-      setTimeout(() => {
-        setGameStatus("fortune:False");
-      }, 1500);
+      fortuneType = "False";
     }
-    if (num === 2)
-      setTimeout(() => {
-        setGameStatus("fortune:Tired");
-      }, 1500);
+    if (num === 2) fortuneType = "Tired";
     if (num === 1) {
       $("#fish").attr("id", "jump-nose");
-      setTimeout(() => {
-        setGameStatus("fortune:Passionate");
-      }, 1500);
+      fortuneType = "Passionate";
     }
+    setTimeout(() => {
+      setGameStatus(`fortune:${fortuneType}`);
+    }, 1500);
   };
 
   const handleNotReadyClick = () => {
