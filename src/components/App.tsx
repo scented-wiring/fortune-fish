@@ -14,7 +14,6 @@ const App = () => {
   let fortune, message, buttons;
 
   const handleFortune = () => {
-    setGameStatus("pause");
     const num = Math.floor(Math.random() * 7) + 1;
     if (num === 7) {
       $("#head").attr("id", "head-move");
@@ -131,9 +130,6 @@ const App = () => {
     setTimeout(() => {
       handleFortune();
     }, 3000);
-  } else if (gameStatus === "pause") {
-    message = null;
-    buttons = null;
   } else if (gameStatus === "fortune:Jealous") {
     message =
       "See how the head moves? The fortune fish has determined you to be a jealous person. A most ugly trait.";
