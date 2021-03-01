@@ -43,9 +43,4 @@ button:focus {
   p {
     font-size: 0.9em;
   }
-
-  button {
-    font-size: 0.9em;
-    width: 80px;
-  }
 }
