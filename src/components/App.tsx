@@ -19,27 +19,22 @@ const App = () => {
     if (num === 7) {
       $("#head").attr("id", "head-move");
       fortuneType = "Jealous";
-    }
-    if (num === 6) {
+    } else if (num === 6) {
       $("#tail").attr("id", "tail-move");
       fortuneType = "Indifferent";
-    }
-    if (num === 5) {
+    } else if (num === 5) {
       $("#tail").attr("id", "tail-move");
       $("#head").attr("id", "head-move");
       fortuneType = "In Love";
-    }
-    if (num === 4) {
+    } else if (num === 4) {
       $("#tail").attr("id", "tail-curl");
       $("#head").attr("id", "head-curl");
       fortuneType = "Fickle";
-    }
-    if (num === 3) {
+    } else if (num === 3) {
       $("#fish").attr("id", "jump");
       fortuneType = "False";
-    }
-    if (num === 2) fortuneType = "Tired";
-    if (num === 1) {
+    } else if (num === 2) fortuneType = "Tired";
+    else {
       $("#fish").attr("id", "jump-nose");
       fortuneType = "Passionate";
     }
