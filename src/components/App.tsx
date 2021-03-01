@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import $ from "jquery";
+
 import hand from "../images/hand.png";
 import head from "../images/head.png";
 import body from "../images/body.png";
 import tail from "../images/tail.png";
 
 import "../styles/App.css";
+
+const $ = require("jquery");
 
 const App = () => {
   const [gameStatus, setGameStatus] = useState("prefish:initial");
