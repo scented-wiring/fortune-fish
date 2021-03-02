@@ -1,4 +1,4 @@
-# Fortune Fish App (Work in progress)
+# Fortune Fish App
 
 ![Fortune fish product](https://github.com/scented-wiring/fortune-fish/blob/master/readme-images/fortunefish.jpg)
 
@@ -12,7 +12,7 @@ Inspired by the Christmas cracker trinket of the same name, this app renders a f
 
 ## Mobile
 
-![Mobile screenshot](https://github.com/scented-wiring/portfolio/blob/main/readme-screenshots/mobile-screenshot.png)
+![Mobile screenshot](https://github.com/scented-wiring/fortune-fish/blob/master/readme-images/mobile-screenshot.png)
 
 ## Built with
 
